@@ -4,19 +4,21 @@ import ErrorPage from "../Components/ErrorPage";
 import AuthLayouts from "../Layouts/AuthLayouts";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
-import Home from "../Pages/Home";
+
 import Kids from "../Components/Kids";
+
+import Home from "../Pages/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Roots></Roots>,
     errorElement: <ErrorPage></ErrorPage>,
-    Component: Roots,
     children: [
       {
         path: "/",
         index: true,
-        Component: Home,
+        element: <Home></Home>,
         loader: () => fetch("/TrendingApp.json"),
       },
     ],
@@ -24,19 +26,19 @@ const router = createBrowserRouter([
 
   {
     path: "/kids",
-    Component: Kids,
+    element: <Kids></Kids>,
   },
   {
     path: "/auth",
-    Component: AuthLayouts,
+    element: <AuthLayouts></AuthLayouts>,
     children: [
       {
         path: "/auth/login",
-        Component: Login,
+        element: <Login></Login>,
       },
       {
         path: "/auth/register",
-        Component: Register,
+        element: <Register></Register>,
       },
     ],
   },
